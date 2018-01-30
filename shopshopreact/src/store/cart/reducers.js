@@ -37,7 +37,6 @@ export default function cart(state = initialState, action){
       productsCarted: newArrayRemoveQuantity
     }
     default:
-    console.log(state.productsCarted)
     return state;
   }
 }
