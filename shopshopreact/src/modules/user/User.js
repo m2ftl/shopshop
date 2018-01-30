@@ -9,7 +9,7 @@ class User extends Component {
     console.log("toto");
     console.log(this.props.user.id);
     return (
-      <div className="App">
+      <div className="jumbotron">
         <div className="App-intro">
           {this.props.user.id ? (
             <div className="signout" onClick={this.props.signOut}>
@@ -17,7 +17,6 @@ class User extends Component {
             </div>
           ) : (
             <div className="App-title">
-            <h1 className="App-title">Login</h1>
             <div
               className="g-signin2"
               data-onsuccess="googleConnectCallback"

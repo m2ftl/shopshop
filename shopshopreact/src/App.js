@@ -9,9 +9,9 @@ class App extends Component {
   render() {
     return (
       <div>
+        <User />
         <Categories />
         <Cart />
-        <User />
       </div>
     );
   }
