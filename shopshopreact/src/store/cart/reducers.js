@@ -1,5 +1,5 @@
 const initialState={
-  productsCarted: [{decathlon_id: 2345, title: "testproduct", min_price:3, image_path:"toto"}],
+  productsCarted: [{decathlon_id: 2345, title: "testproduct", min_price:3, image_path:"https://www.decathlon.fr/media/835/8350534/zoom_2ec07fad67464648a94a5f2c6be18319.jpg"}],
 }
 
 export default function cart(state = initialState, action){
@@ -36,6 +36,7 @@ export default function cart(state = initialState, action){
       productsCarted: newArrayRemoveQuantity
     }
     default:
+    console.log(state.productsCarted)
     return state;
   }
 }

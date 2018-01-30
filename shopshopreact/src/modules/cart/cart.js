@@ -4,11 +4,17 @@ import { connect } from "react-redux";
 class Cart extends React.Component{
   render(){
     const cartDisplay= this.props.products.map((element)=>
-    <ul>{element.decathlon_id}</ul>)
+    <tr>
+    <td>{element.decathlon_id}</td>
+    <td>{element.title}</td>
+    <td>{element.min_price}</td>
+    <td><img src={element.image_path}/></td>
+  </tr>)
+
     return(
       <div>
         <h1>Cart</h1>
-        <span>{cartDisplay}</span>
+        <table>{cartDisplay}</table>
       </div>
     )
   }
@@ -16,7 +22,7 @@ class Cart extends React.Component{
 
 function mapStateToProps(state){
   return{
-    products: state.productsCarted
+    products: state.Cart.productsCarted
   }
 }
 //
