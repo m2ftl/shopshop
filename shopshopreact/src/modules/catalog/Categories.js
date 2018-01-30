@@ -27,7 +27,7 @@ class Categories extends Component {
   render() {
     let listCatReduce = this.props.categories.map((category) =>
       {
-      if(category.label.includes(this.state.current)){
+      if(category.label.toUpperCase().includes(this.state.current.toUpperCase())){
         return (<li
           key={category.decathlon_id}
           onClick={() => this.props.getProductsFromCategory(category.id)}>{category.label}
