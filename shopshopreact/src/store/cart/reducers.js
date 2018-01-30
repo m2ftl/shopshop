@@ -1,5 +1,6 @@
 const initialState={
-  productsCarted: [{decathlon_id: 2345, title: "testproduct", min_price:3, image_path:"https://www.decathlon.fr/media/835/8350534/zoom_2ec07fad67464648a94a5f2c6be18319.jpg"}],
+  productsCarted: [{decathlon_id: 2345, title: "testproduct", min_price:3, image_path:"https://www.decathlon.fr/media/835/8350534/zoom_2ec07fad67464648a94a5f2c6be18319.jpg", quantity: 2},
+{decathlon_id: 234345, title: "testput", min_price:12, image_path:"https://www.decathlon.fr/media/835/8350534/zoom_2ec07fad67464648a94a5f2c6be18319.jpg", quantity: 1}],
 }
 
 export default function cart(state = initialState, action){
@@ -19,7 +20,7 @@ export default function cart(state = initialState, action){
       ...state,
       productsCarted: newArrayRemoveProduct
     }
-    case "ADD_QUANTITY":
+    case "INCREASE_QUANTITY":
     const indexAdd = state.productsCarted.indexOf(action.products);
     let newArrayAddQuantity = state.productsCarted.slice();
     newArrayAddQuantity[indexAdd].quantity += 1
@@ -27,7 +28,7 @@ export default function cart(state = initialState, action){
       ...state,
       productsCarted: newArrayAddQuantity
     }
-    case "REMOVE_QUANTITY":
+    case "DECREASE_QUANTITY":
     const indexRemove = state.productsCarted.indexOf(action.products);
     let newArrayRemoveQuantity = state.productsCarted.slice();
     newArrayRemoveQuantity[indexRemove].quantity -= 1
