@@ -26,3 +26,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.signout {
+  font-family: Roboto, arial, sans-serif;
+  background-color: #4285f4;
+  border: none;
+  color: #fff;
+  padding: .5em .75em;
+  cursor: pointer;
+}
