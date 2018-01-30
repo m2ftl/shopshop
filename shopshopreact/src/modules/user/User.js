@@ -6,10 +6,8 @@ import { getUserState } from "../../store/user/selectors";
 
 class User extends Component {
   render() {
-    console.log("toto");
-    console.log(this.props.user.id);
     return (
-      <div className="jumbotron">
+      <div>
         <div className="App-intro">
           {this.props.user.id ? (
             <div className="signout" onClick={this.props.signOut}>

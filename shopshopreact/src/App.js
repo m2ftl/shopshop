@@ -9,9 +9,13 @@ class App extends Component {
   render() {
     return (
       <div>
+      <div className="jumbotron">
+      </div>
+      <div>
         <User />
         <Categories />
         <Cart />
+      </div>
       </div>
     );
   }
