@@ -13,9 +13,8 @@ export default function cart(state = initialState, action){
       productsCarted: newArrayAddProduct
     }
     case "REMOVE_PRODUCT":
-    const indexRemoved = state.productsCarted.indexOf(action.product);
     let newArrayRemoveProduct = state.productsCarted.slice();
-    newArrayRemoveProduct.splice(indexRemoved, 1)
+    newArrayRemoveProduct.splice(action.index, 1)
     return{
       ...state,
       productsCarted: newArrayRemoveProduct
