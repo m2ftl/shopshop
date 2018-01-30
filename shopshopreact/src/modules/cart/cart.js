@@ -7,7 +7,7 @@ class Cart extends React.Component{
     <tr>
     <td>{element.decathlon_id}</td>
     <td>{element.title}</td>
-    <td>{element.min_price}</td>
+    <td>{element.min_price}€</td>
     <td><img src={element.image_path}/></td>
   </tr>)
 
