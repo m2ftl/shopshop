@@ -1,23 +1,11 @@
-import React from 'react';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware , combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+import Cart from "./cart/reducers";
+import retrieveCategories from "./catalog/reducers";
 
-const initialState = {
-  categories: []
-};
+let reducers = combineReducers({
+  retrieveCategories: retrieveCategories,
+  Cart: Cart});
 
-function cat(state=initialState, action) {
-  switch(action.type) {
-    case "CATEGORIES":
-      let arrayCat = [];
-      arrayCat.push(action.categories);
-      return {
-        categories: arrayCat,
-      };
-    default:
-      return state;
-  }
-}
-
-let store = createStore(cat, applyMiddleware(thunk));
+let store = createStore(reducers, applyMiddleware(thunk));
 export default store;
