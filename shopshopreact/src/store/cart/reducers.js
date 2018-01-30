@@ -1,3 +1,5 @@
+import {mapDispatchToProps} from "./actions"
+
 const initialState={
   productsCarted: [{decathlon_id: 1234, title: "testproduct", min_price:3, image_path:"https://www.decathlon.fr/media/835/8350534/zoom_2ec07fad67464648a94a5f2c6be18319.jpg", quantity: 2},
 {decathlon_id: 5678, title: "testput", min_price:12, image_path:"https://www.decathlon.fr/media/835/8350534/zoom_2ec07fad67464648a94a5f2c6be18319.jpg", quantity: 1}],
@@ -29,9 +31,10 @@ export default function cart(state = initialState, action){
     case "DECREASE_QUANTITY":
     let newArrayDecreaseQuantity = state.productsCarted.slice();
     newArrayDecreaseQuantity[action.index].quantity -= 1
+    const newArray = newArrayDecreaseQuantity.filter(element => element.quantity > 0)
     return{
       ...state,
-      productsCarted: newArrayDecreaseQuantity
+      productsCarted: newArray
     }
     default:
     return state;
