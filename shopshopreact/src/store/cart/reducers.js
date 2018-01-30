@@ -1,19 +1,19 @@
 const initialState={
-  productsCarted: [{decathlon_id: 2345, title: "testproduct", min_price:3, image_path:"https://www.decathlon.fr/media/835/8350534/zoom_2ec07fad67464648a94a5f2c6be18319.jpg", quantity: 2},
-{decathlon_id: 234345, title: "testput", min_price:12, image_path:"https://www.decathlon.fr/media/835/8350534/zoom_2ec07fad67464648a94a5f2c6be18319.jpg", quantity: 1}],
+  productsCarted: [{decathlon_id: 1234, title: "testproduct", min_price:3, image_path:"https://www.decathlon.fr/media/835/8350534/zoom_2ec07fad67464648a94a5f2c6be18319.jpg", quantity: 2},
+{decathlon_id: 5678, title: "testput", min_price:12, image_path:"https://www.decathlon.fr/media/835/8350534/zoom_2ec07fad67464648a94a5f2c6be18319.jpg", quantity: 1}],
 }
 
 export default function cart(state = initialState, action){
   switch(action.type){
     case "ADD_PRODUCT":
     let newArrayAddProduct = state.productsCarted.slice();
-    newArrayAddProduct.splice(newArrayAddProduct.length, 0 , action.products);
+    newArrayAddProduct.splice(newArrayAddProduct.length, 0 , action.product);
     return{
       ...state,
       productsCarted: newArrayAddProduct
     }
     case "REMOVE_PRODUCT":
-    const indexRemoved = state.productsCarted.indexOf(action.products);
+    const indexRemoved = state.productsCarted.indexOf(action.product);
     let newArrayRemoveProduct = state.productsCarted.slice();
     newArrayRemoveProduct.splice(indexRemoved, 1)
     return{
@@ -21,20 +21,18 @@ export default function cart(state = initialState, action){
       productsCarted: newArrayRemoveProduct
     }
     case "INCREASE_QUANTITY":
-    const indexAdd = state.productsCarted.indexOf(action.products);
-    let newArrayAddQuantity = state.productsCarted.slice();
-    newArrayAddQuantity[indexAdd].quantity += 1
+    let newArrayIncreaseQuantity = state.productsCarted.slice();
+    newArrayIncreaseQuantity[action.index].quantity += 1
     return{
       ...state,
-      productsCarted: newArrayAddQuantity
+      productsCarted: newArrayIncreaseQuantity
     }
     case "DECREASE_QUANTITY":
-    const indexRemove = state.productsCarted.indexOf(action.products);
-    let newArrayRemoveQuantity = state.productsCarted.slice();
-    newArrayRemoveQuantity[indexRemove].quantity -= 1
+    let newArrayDecreaseQuantity = state.productsCarted.slice();
+    newArrayDecreaseQuantity[action.index].quantity -= 1
     return{
       ...state,
-      productsCarted: newArrayRemoveQuantity
+      productsCarted: newArrayDecreaseQuantity
     }
     default:
     console.log(state.productsCarted)
