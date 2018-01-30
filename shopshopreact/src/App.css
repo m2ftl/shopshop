@@ -20,6 +20,8 @@
 
 .App-intro {
   font-size: large;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
@@ -48,8 +50,10 @@
 .jumbotron {
   margin-bottom: 0px;
   background-image: url(https://www.decathlon.co.uk/store//en/0070084700847/photo-mag1950395172.JPG);
-  background-position: 0% 30%;
+  background-position: 10% 15%;
   background-size: cover;
+  height: 200px;
+  width: 100%;
   background-repeat: no-repeat;
   color: white;
 }
