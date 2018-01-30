@@ -44,3 +44,12 @@
   padding: .5em .75em;
   cursor: pointer;
 }
+
+.jumbotron {
+  margin-bottom: 0px;
+  background-image: url(https://www.decathlon.co.uk/store//en/0070084700847/photo-mag1950395172.JPG);
+  background-position: 0% 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
