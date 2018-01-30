@@ -1,23 +1,34 @@
-import {mapDispatchToProps} from "./actions"
-
 const initialState={
   productsCarted: []
 }
 
-
 export default function cartReducer(state = initialState, action){
   switch(action.type){
     case "ADD_PRODUCT":
-    return{
-      ...state,
-      productsCarted: [
-        ...state.productsCarted,
-        {
-          ...action.productsCarted,
-          quantity: 1
-        }
-      ]
-    }
+      function findProductAlreadyAddToCart(element) {
+        return element.decathlon_id === action.productsAddedToCart.decathlon_id;
+      }
+      const IndexProductAdded = state.productsCarted.findIndex(findProductAlreadyAddToCart);
+
+      if(IndexProductAdded > -1){
+
+        let productsAlreadyInCart = state.productsCarted.slice();
+        productsAlreadyInCart[IndexProductAdded].quantity += 1
+        return {
+          ...state,
+          productsCarted: productsAlreadyInCart
+      }
+      } else {
+        return{
+          ...state,
+          productsCarted: [
+            ...state.productsCarted,
+            {
+              ...action.productsAddedToCart,
+              quantity: 1
+            }
+          ]
+      }}
     case "REMOVE_PRODUCT":
     let newArrayRemoveProduct = state.productsCarted.slice();
     newArrayRemoveProduct.splice(action.index, 1)
