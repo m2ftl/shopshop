@@ -1,14 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
+import {mapStateToProps} from "../../store/cart/selectors"
+import {mapDispatchToProps} from "../../store/cart/actions"
 
 class Cart extends React.Component{
   render(){
-    const cartDisplay= this.props.products.map((element)=>
+    const cartDisplay= this.props.products.map((element, index)=>
     <tr>
     <td>{element.decathlon_id}</td>
     <td>{element.title}</td>
     <td>{element.min_price}€</td>
     <td><img src={element.image_path}/></td>
+    <td><button onClick={this.props.decrement} value = {index} >-</button></td>
+    <td>{element.quantity}</td>
+    <td><button onClick={this.props.increment} value = {index} >+</button></td>
   </tr>)
 
     return(
@@ -20,11 +25,6 @@ class Cart extends React.Component{
   }
 }
 
-function mapStateToProps(state){
-  return{
-    products: state.Cart.productsCarted
-  }
-}
 //
 // function mapDispatchToProps(dispatch){
 //   return{
@@ -34,5 +34,4 @@ function mapStateToProps(state){
 //   }
 // }
 
-
-export default connect (mapStateToProps) (Cart);
+export default connect (mapStateToProps, mapDispatchToProps) (Cart) ;
