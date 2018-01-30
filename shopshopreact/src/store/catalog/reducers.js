@@ -1,6 +1,7 @@
 const initialState = {
   categories: [],
-  products: []
+  products: [],
+  product:{}
 };
 
 export default function catalogReducer(state=initialState, action) {
@@ -14,6 +15,11 @@ export default function catalogReducer(state=initialState, action) {
       return {
         ...state,
         products: action.products
+      }
+    case "PRODUCT_DETAILS":
+      return {
+        ...state,
+        product: action.product
       }
     default:
       return state;

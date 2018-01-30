@@ -33,6 +33,26 @@ export function catalogActions(dispatch){
       .catch((error) => {
         console.warn(error);
       });
+    },
+    getProductDetails: (productId) => {
+      console.log(productId);
+      return fetch(
+        `https://decath-product-api.herokuapp.com/products/${productId}`,
+        {method: "GET"}
+      )
+      .then((response) => response.json())
+      .then((resultProductDetails) => {
+        dispatch({
+          type:"PRODUCT_DETAILS",
+          product:resultProductDetails
+        })
+      })
+      .catch((error) => {
+          console.warn(error);
+        });
+    },
+    AddProductToCart: (product) => {
+      dispatch({type:"ADD_PRODUCT",productsAddedToCart:product})
     }
   }
 }
