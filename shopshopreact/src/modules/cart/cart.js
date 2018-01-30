@@ -1,18 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
-import {mapStateToProps} from "../../store/cart/selectors"
-import {mapDispatchToProps} from "../../store/cart/actions"
+import { getCart } from '../../store/cart/selectors';
+import { cartActions } from '../../store/cart/actions';
 
 class Cart extends React.Component{
+
+  componentDidMount() {
+    console.log(this.props.productsCarted);
+  }
+
   render(){
-    const cartDisplay= this.props.products.map((element, index)=>
-    <tr>
-    <td>{element.decathlon_id}</td>
-    <td>{element.title}</td>
-    <td>{element.min_price}€</td>
-    <td><img src={element.image_path}/></td>
+    const cartDisplay= this.props.productsCarted.map((product, index)=>
+    <tr key="product.id">
+    <td>{product.decathlon_id}</td>
+    <td>{product.title}</td>
+    <td>{product.min_price}€</td>
+    <td><img alt={product.title} src={"https://www.decathlon.fr/media/"+product.image_path}/></td>
     <td><button onClick={this.props.decrement} value = {index} >-</button></td>
-    <td>{element.quantity}</td>
+    <td>{product.quantity}</td>
     <td><button onClick={this.props.increment} value = {index} >+</button></td>
     <td><button onClick={this.props.remove} value = {index} >Remove</button></td>
   </tr>)
@@ -20,19 +25,10 @@ class Cart extends React.Component{
     return(
       <div>
         <h1>Cart</h1>
-        <table>{cartDisplay}</table>
+        <table><tbody>{cartDisplay}</tbody></table>
       </div>
     )
   }
 }
 
-//
-// function mapDispatchToProps(dispatch){
-//   return{
-// "REMOVE_PRODUCT":
-// "ADD_QUANTITY":
-// "REMOVE_QUANTITY":
-//   }
-// }
-
-export default connect (mapStateToProps, mapDispatchToProps) (Cart) ;
+export default connect (getCart, cartActions) (Cart);

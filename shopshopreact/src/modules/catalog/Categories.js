@@ -11,8 +11,12 @@ class Categories extends Component {
   }
 
   render() {
-    let listCatDisplay = this.props.categories.map((element) =>
-        <li onClick={() => this.props.getProductsFromCategory(element.id)}>{element.label}</li>
+    let listCatDisplay = this.props.categories.map((product) =>
+        <li
+          key={product.decathlon_id}
+          onClick={() => this.props.getProductsFromCategory(product.id)}>{product.label}
+
+        </li>
     )
 
     return (

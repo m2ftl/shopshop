@@ -1,6 +1,6 @@
 export function getCatalog(state) {
   return {
-    categories: state.retrieveCatalog.categories,
-    products: state.retrieveCatalog.products
+    categories: state.catalogReducer.categories,
+    products: state.catalogReducer.products
   }
 }

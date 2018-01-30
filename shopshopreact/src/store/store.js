@@ -1,12 +1,12 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import retrieveCatalog from './catalog/reducers.js';
-import Cart from './cart/reducers';
+import catalogReducer from './catalog/reducers.js';
+import cartReducer from './cart/reducers';
 import userReducer from "./user/reducer";
 
 let reducers = combineReducers({
-  retrieveCatalog: retrieveCatalog,
-  Cart: Cart,
+  catalogReducer: catalogReducer,
+  cartReducer: cartReducer,
   userReducer: userReducer
 });
 

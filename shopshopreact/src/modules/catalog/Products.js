@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import '../../App.css';
-import { catalogActions } from "../../store/catalog/actions";
+import { cartActions } from "../../store/cart/actions";
 import { getCatalog } from "../../store/catalog/selectors";
 
 class Products extends Component {
 
   render() {
-    let listPrdsDisplay = this.props.products.map((element) =>
-      <tr>
-        <td>{element.title}</td>
-        <td>{element.min_price}€</td>
-        <td><img src={"https://www.decathlon.fr/media/"+element.image_path} width="60px" height="60px" /></td>
-        <td><button>Add to cart</button></td>
+
+    let listPrdsDisplay = this.props.products.map((product) =>
+      <tr key={product.id}>
+        <td>{product.title}</td>
+        <td>{product.min_price}€</td>
+        <td><img alt={product.title} src={"https://www.decathlon.fr/media/"+product.image_path} width="60px" height="60px" /></td>
+        <td><button onClick={() => this.props.AddProductToCart(product)}>Add to cart</button></td>
       </tr>
     )
 
@@ -33,4 +34,4 @@ class Products extends Component {
   }
 }
 
-export default connect(getCatalog, catalogActions)(Products);
+export default connect(getCatalog, cartActions)(Products);

@@ -1,18 +1,22 @@
 import {mapDispatchToProps} from "./actions"
 
 const initialState={
-  productsCarted: [{decathlon_id: 1234, title: "testproduct", min_price:3, image_path:"https://www.decathlon.fr/media/835/8350534/zoom_2ec07fad67464648a94a5f2c6be18319.jpg", quantity: 2},
-{decathlon_id: 5678, title: "testput", min_price:12, image_path:"https://www.decathlon.fr/media/835/8350534/zoom_2ec07fad67464648a94a5f2c6be18319.jpg", quantity: 1}],
+  productsCarted: []
 }
 
-export default function cart(state = initialState, action){
+
+export default function cartReducer(state = initialState, action){
   switch(action.type){
     case "ADD_PRODUCT":
-    let newArrayAddProduct = state.productsCarted.slice();
-    newArrayAddProduct.splice(newArrayAddProduct.length, 0 , action.product);
     return{
       ...state,
-      productsCarted: newArrayAddProduct
+      productsCarted: [
+        ...state.productsCarted,
+        {
+          ...action.productsCarted,
+          quantity: 1
+        }
+      ]
     }
     case "REMOVE_PRODUCT":
     let newArrayRemoveProduct = state.productsCarted.slice();
