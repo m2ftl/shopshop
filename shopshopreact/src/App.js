@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Categories from './Categories';
+import Categories from './modules/catalog/Categories';
 import Cart from "./modules/cart/cart";
 
 class App extends Component {
