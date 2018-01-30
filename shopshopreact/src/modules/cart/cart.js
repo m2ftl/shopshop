@@ -14,6 +14,7 @@ class Cart extends React.Component{
     <td><button onClick={this.props.decrement} value = {index} >-</button></td>
     <td>{element.quantity}</td>
     <td><button onClick={this.props.increment} value = {index} >+</button></td>
+    <td><button onClick={this.props.remove} value = {index} >Remove</button></td>
   </tr>)
 
     return(
