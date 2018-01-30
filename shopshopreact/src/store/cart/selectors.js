@@ -1,5 +1,5 @@
-export function mapStateToProps(state){
-  return{
-    products: state.Cart.productsCarted
+export function getCart(state) {
+  return {
+    productsCarted: state.cartReducer.productsCarted
   }
 }

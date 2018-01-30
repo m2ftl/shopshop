@@ -19,7 +19,6 @@ export function catalogActions(dispatch){
       });
     },
     getProductsFromCategory: (idCat) => {
-      console.log(idCat);
       return fetch(
         `https://decath-product-api.herokuapp.com/categories/${idCat}/products`,
         {method: "GET"}

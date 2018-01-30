@@ -3,7 +3,7 @@ const initialState = {
   products: []
 };
 
-export default function retrieveCatalog(state=initialState, action) {
+export default function catalogReducer(state=initialState, action) {
   switch(action.type) {
     case "CATEGORIES":
       return {
