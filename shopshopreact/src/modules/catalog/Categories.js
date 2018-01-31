@@ -40,14 +40,8 @@ class Categories extends Component {
     )
 
     return (
-      <div className="container">
+      <div className="categories">
         <div className="listCat">
-          <Link to="/cart">
-            <button>
-              <img src={cartLogo} width={'30px'} height={'25px'} alt="cartLogo"/>
-              GO TO CART
-            </button>
-          </Link>
           <h1>Categories</h1>
           <form onSubmit={this.handleSubmit}>
             <div>

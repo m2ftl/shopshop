@@ -24,13 +24,27 @@
   justify-content: center;
 }
 
-.container {
+.categories {
   display: grid;
   grid-template-columns: auto auto;
 }
 
+.navbar {
+  display: flex;
+  align-items:center;
+}
+
+.navbar div, .navbar img {
+  padding-right: 10px;
+}
+
 .listProducts {
   margin-top: 40px;
+}
+
+.cartbutton {
+  background-color: #4285f4;
+  color:white;
 }
 
 @keyframes App-logo-spin {
