@@ -4,6 +4,8 @@ import '../../App.css';
 import { catalogActions } from "../../store/catalog/actions";
 import { getCatalog } from "../../store/catalog/selectors";
 import Products from './Products';
+import { Link } from "react-router-dom";
+
 
 class Categories extends Component {
   constructor(props) {
@@ -39,6 +41,11 @@ class Categories extends Component {
     return (
       <div className="container">
         <div className="listCat">
+          <Link to="/cart">
+            <button>
+              GO TO CART
+            </button>
+          </Link>
           <h1>Categories</h1>
           <form onSubmit={this.handleSubmit}>
             <div class="form-group">
