@@ -3,7 +3,7 @@ export function cartActions(dispatch){
   return {
 
     AddProductToCart: (product) => {
-      dispatch({type:"ADD_PRODUCT",productsAddedToCart:product})
+      dispatch({type:"ADD_PRODUCT",productsAddedToCart:product});
     },
 
     increment: (event) => dispatch({ type: "INCREASE_QUANTITY", index: event.target.value }),

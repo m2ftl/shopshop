@@ -1,10 +1,12 @@
-const initialState={
-  productsCarted: []
-}
+
+const initialState = localStorage.getItem("productsInCart")
+  ? {productsCarted: JSON.parse(localStorage.getItem("productsInCart"))}
+  : {productsCarted: []};
 
 export default function cartReducer(state = initialState, action){
   switch(action.type){
     case "ADD_PRODUCT":
+      localStorage.setItem("myCat", "Garfield");
       function findProductAlreadyAddToCart(element) {
         return element.decathlon_id === action.productsAddedToCart.decathlon_id;
       }
@@ -14,20 +16,21 @@ export default function cartReducer(state = initialState, action){
 
         let productsAlreadyInCart = state.productsCarted.slice();
         productsAlreadyInCart[IndexProductAdded].quantity += 1
+        localStorage.setItem("productsInCart", JSON.stringify(productsAlreadyInCart));
         return {
           ...state,
           productsCarted: productsAlreadyInCart
       }
       } else {
+        let productsInCart = state.productsCarted.slice();
+        productsInCart.splice(productsInCart.length,0,   {
+            ...action.productsAddedToCart,
+            quantity: 1
+          });
+        localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
         return{
           ...state,
-          productsCarted: [
-            ...state.productsCarted,
-            {
-              ...action.productsAddedToCart,
-              quantity: 1
-            }
-          ]
+          productsCarted: productsInCart
       }}
     case "REMOVE_PRODUCT":
     let newArrayRemoveProduct = state.productsCarted.slice();
