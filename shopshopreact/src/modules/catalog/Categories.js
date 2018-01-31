@@ -5,6 +5,7 @@ import { catalogActions } from "../../store/catalog/actions";
 import { getCatalog } from "../../store/catalog/selectors";
 import Products from './Products';
 import { Link } from "react-router-dom";
+import cartLogo from '../../images/cart.png';
 
 
 class Categories extends Component {
@@ -43,14 +44,15 @@ class Categories extends Component {
         <div className="listCat">
           <Link to="/cart">
             <button>
+              <img src={cartLogo} width={'30px'} height={'25px'} />
               GO TO CART
             </button>
           </Link>
           <h1>Categories</h1>
           <form onSubmit={this.handleSubmit}>
-            <div class="form-group">
-              <label for="search-category">Search categories</label>
-              <input type="text" class="form-control" id="search-category" value={this.state.current} onChange={this.handleSubmit}/>
+            <div>
+              <label>Search categories</label>
+              <input type="text" id="search-category" value={this.state.current} onChange={this.handleSubmit}/>
             </div>
           </form>
           <ul>

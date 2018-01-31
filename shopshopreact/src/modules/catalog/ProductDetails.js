@@ -12,7 +12,7 @@ class ProductDetails extends Component {
         <div><img src={"https://www.decathlon.fr/media/"+this.props.product.image_path} /></div>
         <div>{this.props.product.title}</div>
         <div>{this.props.product.description}</div>
-        <div>{this.props.product.min_price}</div>
+        <div>{this.props.product.min_price} €</div>
         <div><button onClick={() => this.props.AddProductToCart(this.props.product)}>Add to Cart</button></div>
       </div>
     );

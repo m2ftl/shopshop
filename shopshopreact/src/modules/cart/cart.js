@@ -14,18 +14,20 @@ class Cart extends React.Component{
     <tr key="product.id">
     <td>{product.decathlon_id}</td>
     <td>{product.title}</td>
-    <td><img alt={product.title} src={"https://www.decathlon.fr/media/"+product.image_path}/></td>
+    <td><img alt={product.title} src={"https://www.decathlon.fr/media/"+product.image_path} width={"70px"}/></td>
     <td>{product.min_price} €</td>
     <td><button onClick={this.props.decrement} value = {index} >-</button></td>
     <td>{product.quantity}</td>
     <td><button onClick={this.props.increment} value = {index} >+</button></td>
     <td><button onClick={this.props.remove} value = {index} >Remove</button></td>
-    <td>{product.quantity*product.min_price} €</td>
+    <td>{Math.round((product.quantity*product.min_price)*100)/100} €</td>
   </tr>)
     let sumPrice=0
-    const totalPrice= this.props.productsCarted.map((product) =>
+    let totalPrice= this.props.productsCarted.map((product) =>
      sumPrice += product.quantity*product.min_price
   )
+
+  sumPrice = Math.round(sumPrice*100)/100;
 
     return(
       <div>
