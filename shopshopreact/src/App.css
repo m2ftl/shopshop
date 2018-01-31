@@ -57,3 +57,21 @@
   background-repeat: no-repeat;
   color: white;
 }
+
+.ProductDetails {
+  margin: 20px
+}
+.ProductDetails img{
+  min-width: 205px;
+  min-height:205px;
+}
+
+.clear {
+  clear: both
+}
+
+.price {font-size: 25px;}
+
+.product-description:first-letter {
+  text-transform: capitalize
+}

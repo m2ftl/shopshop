@@ -44,7 +44,7 @@ class Categories extends Component {
         <div className="listCat">
           <Link to="/cart">
             <button>
-              <img src={cartLogo} width={'30px'} height={'25px'} />
+              <img src={cartLogo} width={'30px'} height={'25px'} alt="cartLogo"/>
               GO TO CART
             </button>
           </Link>
