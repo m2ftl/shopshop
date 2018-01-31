@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { getCart } from '../../store/cart/selectors';
 import { cartActions } from '../../store/cart/actions';
+import { Link } from "react-router-dom";
+
 
 class Cart extends React.Component{
 
@@ -31,6 +33,11 @@ class Cart extends React.Component{
 
     return(
       <div>
+      <div className="mb-3">
+        <Link to="/">
+          <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+        </Link>
+      </div>
         <h1>Cart</h1>
         <table><tbody>{cartDisplay}</tbody></table>
         <h1>The total price is {sumPrice} €</h1>
