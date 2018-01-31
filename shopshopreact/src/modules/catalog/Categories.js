@@ -12,9 +12,29 @@ class Categories extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: ""
+      current: "",
+      sideClass: "",
+      buttonpush: 0
     };
   }
+
+  changeClass = (event) => {
+      event.preventDefault();
+      if (this.state.buttonpush === 0) {
+        this.setState({
+          sideClass:"active",
+          buttonpush:1
+        });
+        this.forceUpdate();
+      }
+      else {
+        this.setState({
+          sideClass:"",
+          buttonpush:0
+        });
+        this.forceUpdate();
+      }
+  };
 
   componentDidMount(){
     this.props.retrieveCategories();
@@ -31,29 +51,36 @@ class Categories extends Component {
     let listCatReduce = this.props.categories.map((category) =>
       {
       if(category.label.toUpperCase().includes(this.state.current.toUpperCase())){
-        return (<li
+        return (<li className="categoriesListStyle"
           key={category.decathlon_id}
-          onClick={() => this.props.getProductsFromCategory(category.id)}>{category.label}
+          onClick={() => this.props.getProductsFromCategory(category.id)}>
+            {category.label}
+            <i class="glyphicon glyphicon-play-circle"></i>
         </li>)
       }
       }
     )
 
     return (
-      <div className="categories">
-        <div className="listCat">
-          <h1>Categories</h1>
-          <form onSubmit={this.handleSubmit}>
-            <div>
-              <label>Search categories</label>
-              <input type="text" id="search-category" value={this.state.current} onChange={this.handleSubmit}/>
-            </div>
-          </form>
-          <ul>
-            {listCatReduce}
-          </ul>
+      <div className="wrapper">
+      <nav id="sidebar" className={this.state.sideClass}>
+      <h1>Categories</h1>
+      <form onSubmit={this.handleSubmit}>
+        <div>
+          <input type="text" id="search-category" value={this.state.current} onChange={this.handleSubmit} placeholder="Search Category"/>
         </div>
-        <Products />
+      </form>
+        <ul className="mt-3 m-0 p-0">
+          {listCatReduce}
+        </ul>
+      </nav>
+      <div id="content" className="mt-5 ml-5">
+        <button type="button" id="sidebarCollapse" className="cartbutton" onClick={this.changeClass}>
+        <i class="glyphicon glyphicon-align-left"></i>&nbsp;
+        Categories
+        </button>
+      <Products />
+      </div>
       </div>
     );
   }

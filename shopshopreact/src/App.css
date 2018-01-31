@@ -32,6 +32,23 @@
 .navbar {
   display: flex;
   align-items:center;
+  margin-bottom: 0px;
+  padding-start: 0px;
+}
+
+.categoriesListStyle {
+  border-bottom: 1px solid #cecece;
+  list-style: none;
+  padding: 5px 0px 5px 5px;
+}
+
+.categoriesListStyle:hover {
+  background:#CECECE;
+}
+
+.categoriesListStyle i {
+  float: right;
+  padding-right: 10px;
 }
 
 .navbar div, .navbar img {
@@ -39,7 +56,6 @@
 }
 
 .listProducts {
-  margin-top: 40px;
 }
 
 .cartbutton {
@@ -98,4 +114,23 @@
 
 .item-2 {
   flex-grow: 2; /* default 0 */
+}
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 350px;
+    min-height: 100vh;
+    padding-left: 10px;
+    border-right: 1px solid grey;
+    margin-left:0px;
+    transition:margin 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -350px;
 }

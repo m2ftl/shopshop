@@ -24,7 +24,7 @@ class Products extends Component {
     )
 
     return (
-      <div className="listProducts">
+      <div className="listProducts ml-3 mt-5">
         <table>
           <thead>
             <tr>

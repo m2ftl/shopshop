@@ -11,13 +11,13 @@ import cartLogo from './images/cart.png';
 
 class App extends Component {
 
+
   render() {
     return (
       <div>
       <div className="jumbotron">
       </div>
-      <div>
-      <div>
+      <div id="content">
       <Navbar>
           <Navbar.Text pullLeft><User /></Navbar.Text>
           <Navbar.Text pullRight>
@@ -30,12 +30,14 @@ class App extends Component {
           </Navbar.Text>
       </Navbar>
       </div>
+      <div>
+
       <Switch>
         <Route path="/cart" render={() => <Cart/>} />
         <Route path="/product/:id" render={(routerProps) => <ProductDetails {...routerProps}/>} />
         <Route render={() =>
           <div>
-          <Categories />
+          <Categories/>
           </div>
         } />
       </Switch>
