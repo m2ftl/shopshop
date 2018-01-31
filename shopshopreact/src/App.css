@@ -84,8 +84,18 @@
   clear: both
 }
 
-.price {font-size: 25px;}
-
 .product-description:first-letter {
   text-transform: capitalize
+}
+
+.container {
+  display: flex; /* or inline-flex */
+}
+
+.item-1 {
+  flex-grow: 1 ; /* default 0 */
+}
+
+.item-2 {
+  flex-grow: 2; /* default 0 */
 }
