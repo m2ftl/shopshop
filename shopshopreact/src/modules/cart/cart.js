@@ -22,8 +22,8 @@ class Cart extends React.Component{
     <td><button onClick={this.props.remove} value = {index} >Remove</button></td>
     <td>{Math.round((product.quantity*product.min_price)*100)/100} €</td>
   </tr>)
-    let sumPrice=0
-    let totalPrice= this.props.productsCarted.map((product) =>
+    let sumPrice=0;
+    this.props.productsCarted.map((product) =>
      sumPrice += product.quantity*product.min_price
   )
 
