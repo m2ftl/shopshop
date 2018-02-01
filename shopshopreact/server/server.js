@@ -25,7 +25,7 @@ app.use(require("body-parser").urlencoded({ extended: false }));
 
 app.post("/charge", (request, result) => {
   // here we need to calculate the price to pay depending on request infos
-  const amount = 1000;
+  const amount = request.body.total*100;
 
   stripe.customers
     .create({

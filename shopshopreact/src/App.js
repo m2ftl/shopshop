@@ -8,6 +8,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import cartLogo from './images/cart.png';
+import Stripe from './utils/Stripe';
 
 class App extends Component {
 
@@ -35,6 +36,7 @@ class App extends Component {
       <Switch>
         <Route path="/cart" render={() => <Cart/>} />
         <Route path="/product/:id" render={(routerProps) => <ProductDetails {...routerProps}/>} />
+        <Route path="/order" render={() => <Stripe/>} />
         <Route render={() =>
           <div>
           <Categories/>
