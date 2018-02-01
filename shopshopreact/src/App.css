@@ -55,12 +55,79 @@
   padding-right: 10px;
 }
 
-.listProducts {
-}
-
 .cartbutton {
   background-color: #4285f4;
   color:white;
+  text-decoration: none;
+}
+
+.cartbutton:focus {
+  outline:0;
+}
+
+.cartbutton:hover {
+  text-decoration: none;
+}
+
+/* List of Products */
+
+.listProducts tbody td {
+  padding-bottom: 10px;
+}
+
+.listProducts tbody td img {
+  margin-left: 25px;
+  margin-right: 10px;
+}
+
+.listProducts tbody td button {
+  margin-left: 20px;
+}
+
+/* Cart */
+
+.homeButton {
+  padding: 10px;
+}
+
+.titleCart img{
+  float: left;
+  margin: 8px;
+}
+
+.cartTable tbody tr {
+  border: 1px solid #cecece;
+}
+
+.cartTable tbody img {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.cartTable .priceArticle {
+  padding-right: 20px;
+}
+
+.cartTable tbody td {
+  padding-left: 20px;
+}
+
+.cartTable button {
+  background-color: #4285f4;
+  color:white;
+}
+
+.removeButton button {
+  background-color: #cecece;
+  color:black;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.totalPrice {
+  padding-top: 30px;
 }
 
 @keyframes App-logo-spin {
@@ -133,4 +200,21 @@
 
 #sidebar.active {
     margin-left: -350px;
+}
+
+/** ScrollToTop **/
+
+#scrollToTop a{
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+  background-color: rgb(255,255,255); /** rgba fallback**/
+  background-color: rgba(255,255,255, 0.0);
+  padding: 60px 40px;
+}
+
+#scrollToTop a:hover{
+  background-color: rgb(255,255,255); /** rgba fallback**/
+  background-color: rgba(255,255,255, 0.0);
+  padding: 60px 40px;
 }

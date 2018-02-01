@@ -52,6 +52,7 @@ export function catalogActions(dispatch){
         });
     },
     AddProductToCart: (product) => {
+      window.alert(`${product.title} has been added to your cart`);
       dispatch({type:"ADD_PRODUCT",productsAddedToCart:product})
     }
   }

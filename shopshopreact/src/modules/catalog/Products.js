@@ -13,13 +13,13 @@ class Products extends Component {
     let listPrdsDisplay = this.props.products.map((product) =>
       <tr key={product.id}>
         <td>{product.title}</td>
-        <td>{product.min_price}€</td>
+        <td className="bold">{product.min_price}€</td>
         <td><img alt={product.title} src={"https://www.decathlon.fr/media/"+product.image_path} width="60px" height="60px" /></td>
         <td><Link to={'/product/'+product.id}>
               <button onClick={() => this.props.getProductDetails(product.id)}>View Details</button>
             </Link>
         </td>
-        <td><button onClick={() => this.props.AddProductToCart(product)}>Add to cart</button></td>
+        <td><button className="btn btn-success" onClick={() => this.props.AddProductToCart(product)}>Add to cart</button></td>
       </tr>
     )
 
