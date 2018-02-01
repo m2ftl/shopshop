@@ -4,11 +4,11 @@ import Categories from './modules/catalog/Categories';
 import Cart from "./modules/cart/cart";
 import User from "./modules/user/User";
 import ProductDetails from "./modules/catalog/ProductDetails";
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch, withRouter, Redirect, Link } from "react-router-dom";
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem} from "react-bootstrap";
-import { Link } from "react-router-dom";
 import cartLogo from './images/cart.png';
 import Stripe from './utils/Stripe';
+import { connect } from 'react-redux';
 
 class App extends Component {
 
@@ -34,9 +34,12 @@ class App extends Component {
       <div>
 
       <Switch>
-        <Route path="/cart" render={() => <Cart/>} />
+        <Route path="/cart" render={() => <Cart />} />
         <Route path="/product/:id" render={(routerProps) => <ProductDetails {...routerProps}/>} />
-        <Route path="/order" render={() => <Stripe/>} />
+        <Route path="/order" render={() => (
+          this.props.payed ? (<Redirect to="/" />)
+          : (<Stripe />)
+          )} />
         <Route render={() =>
           <div>
           <Categories/>
@@ -48,7 +51,11 @@ class App extends Component {
     );
   }
 }
+function mapStateToProps(state){
+  return{
+    payed:state.cartReducer.payed
+  }
+}
 
 
-
-export default withRouter(App);
+export default withRouter(connect(mapStateToProps)(App));

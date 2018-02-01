@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import StripeCheckout from "react-stripe-checkout";
 import { connect } from "react-redux";
+import { cartActions } from "../store/cart/actions";
 
 class Stripe extends Component {
   onToken = token => {
@@ -13,13 +14,11 @@ class Stripe extends Component {
       }),
       headers: { "Content-Type": "application/json" }
     })
-      .then(response => {
-        response.json();
-      })
+      .then(response => response.json())
       .then(data => {
         if (data.status === "succeeded") {
-          console.log("titi : ",data);
-          // dispatch a success
+          console.log("succeeded ! data is : ",data);
+          return this.props.resetCart();
         } else {
           console.warn("tata : ",data);
           // dispatch an error
@@ -88,4 +87,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Stripe);
+export default connect(mapStateToProps, cartActions)(Stripe);
