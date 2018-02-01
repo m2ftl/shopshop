@@ -40,12 +40,17 @@ class Categories extends Component {
     this.props.retrieveCategories();
   }
 
-  handleSubmit = (event) => {
+  handleChange = (event) => {
     event.preventDefault();
     this.setState({
       current: event.target.value
     });
   };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
 
   render() {
     let listCatReduce = this.props.categories.map((category) =>
@@ -67,7 +72,7 @@ class Categories extends Component {
       <h1>Categories</h1>
       <form onSubmit={this.handleSubmit}>
         <div>
-          <input type="text" id="search-category" value={this.state.current} onChange={this.handleSubmit} placeholder="Search Category"/>
+          <input type="text" id="search-category" value={this.state.current} onChange={this.handleChange} placeholder="Search Category"/>
         </div>
       </form>
         <ul className="mt-3 m-0 p-0">
