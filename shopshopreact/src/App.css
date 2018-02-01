@@ -188,6 +188,17 @@
     align-items: stretch;
 }
 
+.jauge {
+  width:160px;
+  height:32px;
+  background-image: url("/images/star_black.png");
+}
+
+.jauge > div {
+  background-image: url("/images/star.png");
+  height : 32px;
+}
+
 #sidebar {
     min-width: 250px;
     max-width: 350px;
