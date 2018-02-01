@@ -5,7 +5,6 @@ import { cartActions } from '../../store/cart/actions';
 import { Link } from "react-router-dom";
 import cartLogo from '../../images/cart.png';
 
-
 class Cart extends React.Component{
 
   componentDidMount() {
@@ -36,23 +35,26 @@ class Cart extends React.Component{
 
   sumPrice = Math.round(sumPrice*100)/100;
 
-    return(
-      <div>
-      <div className="mb-3 homeButton">
-        <Link to="/">
-          <i class="fa fa-home fa-2x" aria-hidden="true"></i>
-        </Link>
-      </div>
-        <div className="titleCart">
-          <img src={cartLogo} width={'30px'} height={'25px'} />
-          <h1>Cart</h1>
+      return(
+        <div>
+        <div className="mb-3 homeButton">
+          <Link to="/">
+            <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+          </Link>
         </div>
-        <table className="cartTable">
-          <tbody>{cartDisplay}</tbody>
-        </table>
-        <h1 className="totalPrice">The total price is <span className="bold">{sumPrice} €</span></h1>
-      </div>
-    )
+          <div className="titleCart">
+            <img src={cartLogo} alt="cartLogo" width={'30px'} height={'25px'} />
+            <h1>Cart</h1>
+          </div>
+          <table className="cartTable">
+            <tbody>{cartDisplay}</tbody>
+          </table>
+          <h1 className="totalPrice">The total price is <span className="bold">{sumPrice} €</span></h1>
+          <Link to={'/order/'}>
+          <button onClick={this.props.calculateAmount} className="btn btn-success">Validate my order</button>
+          </Link>
+        </div>
+      )
   }
 }
 

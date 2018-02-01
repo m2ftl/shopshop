@@ -1,7 +1,11 @@
 
 const initialState = localStorage.getItem("productsInCart")
-  ? {productsCarted: JSON.parse(localStorage.getItem("productsInCart"))}
-  : {productsCarted: []};
+  ? {productsCarted: JSON.parse(localStorage.getItem("productsInCart")),
+    totalAmount: 0,
+    payed:false}
+  : {productsCarted: [],
+    totalAmount: 0,
+    payed:false};
 
 export default function cartReducer(state = initialState, action){
   switch(action.type){
@@ -20,7 +24,7 @@ export default function cartReducer(state = initialState, action){
         return {
           ...state,
           productsCarted: productsAlreadyInCart
-      }
+        }
       } else {
         let productsInCart = state.productsCarted.slice();
         productsInCart.splice(productsInCart.length,0,   {
@@ -30,7 +34,8 @@ export default function cartReducer(state = initialState, action){
         localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
         return{
           ...state,
-          productsCarted: productsInCart
+          productsCarted: productsInCart,
+          payed:false
       }}
     case "REMOVE_PRODUCT":
     let newArrayRemoveProduct = state.productsCarted.slice();
@@ -57,7 +62,25 @@ export default function cartReducer(state = initialState, action){
       ...state,
       productsCarted: newArray
     }
+    case "CALCULATE_AMOUNT":
+    let sumPrice=0;
+    state.productsCarted.map((product) =>
+     sumPrice += product.quantity*product.min_price
+    )
+    sumPrice = Math.round(sumPrice*100)/100;
+    return{
+      ...state,
+      totalAmount: sumPrice
+    }
+    case "RESET_CART":
+      localStorage.clear();
+      return {
+        ...state,
+        productsCarted: [],
+        totalAmount: 0,
+        payed:true
+      };
     default:
-    return state;
+      return state;
   }
 }
