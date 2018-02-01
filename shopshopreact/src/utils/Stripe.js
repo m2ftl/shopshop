@@ -28,6 +28,7 @@ class Stripe extends Component {
       });
   };
   render() {
+    if (this.props.givenName) {
     return (
         <div>
           <div className="mb-3 homeButton">
@@ -86,13 +87,22 @@ class Stripe extends Component {
         </div>
     );
   }
+  else {
+    return (
+    <div class="ml-4">
+      <h2>Please Log in </h2>
+    </div>
+    )
+  }
+  }
 }
 
 function mapStateToProps(state) {
   return {
     givenName: state.userReducer.givenName,
     familyName: state.userReducer.familyName,
-    totalAmount: state.cartReducer.totalAmount
+    totalAmount: state.cartReducer.totalAmount,
+    address: state.cartReducer.address
   }
 }
 
