@@ -5,7 +5,6 @@ import { cartActions } from '../../store/cart/actions';
 import { Link } from "react-router-dom";
 import cartLogo from '../../images/cart.png';
 
-
 class Cart extends React.Component{
 
   componentDidMount() {

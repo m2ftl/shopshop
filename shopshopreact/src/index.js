@@ -7,12 +7,11 @@ import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 import "./utils/google_connect"; // initialize global function
 import { BrowserRouter } from "react-router-dom";
+import Stripe from './Stripe';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>,
+
+      <Stripe />
+    ,
   document.getElementById('root'));
 registerServiceWorker();
