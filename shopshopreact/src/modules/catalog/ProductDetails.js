@@ -16,7 +16,7 @@ class ProductDetails extends Component {
 
     return (
       <div>
-        <div className="mb-3 ml-5">
+        <div className="mb-3 ml-5 homeButton">
           <Link to="/">
             <i class="fa fa-home fa-2x" aria-hidden="true"></i>
           </Link>
