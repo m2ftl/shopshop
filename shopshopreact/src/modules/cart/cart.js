@@ -34,7 +34,8 @@ class Cart extends React.Component{
   )
 
   sumPrice = Math.round(sumPrice*100)/100;
-
+  console.log(this.props.productsCarted);
+  if (this.props.productsCarted.length!==0){
       return(
         <div>
         <div className="mb-3 homeButton">
@@ -55,6 +56,24 @@ class Cart extends React.Component{
           </Link>
         </div>
       )
+  }
+  else {
+    return(
+    <div>
+    <div className="mb-3 homeButton">
+      <Link to="/">
+        <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+      </Link>
+    </div>
+      <div className="titleCart">
+        <img src={cartLogo} alt="cartLogo" width={'30px'} height={'25px'} />
+        <h1>Cart is empty</h1>
+      </div>
+      <table className="cartTable">
+        <tbody>{cartDisplay}</tbody>
+      </table>
+    </div>)
+  }
   }
 }
 
