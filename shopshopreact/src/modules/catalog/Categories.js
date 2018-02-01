@@ -4,9 +4,6 @@ import '../../App.css';
 import { catalogActions } from "../../store/catalog/actions";
 import { getCatalog } from "../../store/catalog/selectors";
 import Products from './Products';
-import { Link } from "react-router-dom";
-import cartLogo from '../../images/cart.png';
-
 
 class Categories extends Component {
   constructor(props) {

@@ -5,7 +5,7 @@ import Cart from "./modules/cart/cart";
 import User from "./modules/user/User";
 import ProductDetails from "./modules/catalog/ProductDetails";
 import { Route, Switch, withRouter, Redirect, Link } from "react-router-dom";
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem} from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 import cartLogo from './images/cart.png';
 import Stripe from './utils/Stripe';
 import { connect } from 'react-redux';
@@ -24,7 +24,7 @@ class App extends Component {
           <Navbar.Text pullRight>
           <Link to="/cart">
             <button className="navbar cartbutton">
-              <img src={cartLogo} width={'30px'} height={'25px'} />
+              <img src={cartLogo} alt="cartLogo" width={'30px'} height={'25px'} />
               GO TO CART
             </button>
           </Link>

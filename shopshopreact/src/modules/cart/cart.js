@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getCart } from '../../store/cart/selectors';
 import { cartActions } from '../../store/cart/actions';
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import cartLogo from '../../images/cart.png';
 
 class Cart extends React.Component{
@@ -43,7 +43,7 @@ class Cart extends React.Component{
           </Link>
         </div>
           <div className="titleCart">
-            <img src={cartLogo} width={'30px'} height={'25px'} />
+            <img src={cartLogo} alt="cartLogo" width={'30px'} height={'25px'} />
             <h1>Cart</h1>
           </div>
           <table className="cartTable">
