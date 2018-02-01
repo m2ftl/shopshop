@@ -4,6 +4,7 @@ import '../../App.css';
 import { catalogActions } from "../../store/catalog/actions";
 import { getCatalog } from "../../store/catalog/selectors";
 import { Link } from "react-router-dom";
+import ReactStars from "react-stars";
 
 class ProductDetails extends Component {
 
@@ -29,6 +30,7 @@ class ProductDetails extends Component {
         </div>
         <div className="float-left ml-5 product-info">
           <div className="mb-3"><h1>{this.props.product.title}</h1></div>
+          <ReactStars count={5} value={this.props.product.rating} size={30} edit={false} color2={'tomato'} />
           <div className="mb-5 product-description">{this.props.product.description}</div>
           <div className="float-left font-weight-bold price" role="alert"><h2>{this.props.product.min_price} €</h2></div>
 
