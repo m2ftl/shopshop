@@ -4,6 +4,7 @@ import StripeCheckout from "react-stripe-checkout";
 import { connect } from "react-redux";
 import { cartActions } from "../store/cart/actions";
 import { Link } from "react-router-dom";
+import Form from '../modules/cart/Form';
 
 
 class Stripe extends Component {
@@ -38,51 +39,20 @@ class Stripe extends Component {
           </div>
           <div class="ml-4">
           <h1>Proceed my Order</h1>
-          <h2>Step 1 - Fill my delivery address</h2>
+          <h2><span className="stepDelivery">Step 1</span> - Fill my delivery address</h2>
           <div class="container-fluid">
-            <div class="row">
-              <div class="form-group mr-3">
-                <label for="usr">First Name:</label>
-                <input
-                  type="text"
-                  value={this.props.givenName}
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group">
-                <label for="pwd">Family Name:</label>
-                <input
-                  type="text"
-                  value={this.props.familyName}
-                  class="form-control"
-                />
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-xs-3 ml-0 p-0">
-                <label for="pwd">Address:</label>
-                <input type="text" class="form-control" />
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group mr-3">
-                <label for="pwd">ZIP Code:</label>
-                <input type="text" class="form-control" />
-              </div>
-              <div class="form-group">
-                <label for="pwd">City:</label>
-                <input type="text" class="form-control" />
-              </div>
-            </div>
+            <Form />
           </div>
 
-          <h2>Step 2 - Proceed your payment</h2>
-            <StripeCheckout
-              token={this.onToken}
-              amount={Math.round(this.props.totalAmount*100*100)/100}
-              currency="EUR"
-              stripeKey={process.env.REACT_APP_PUBLISHABLE_KEY}
-            />
+          <h2><span className="stepDelivery">Step 2</span> - Proceed your payment</h2>
+          <div className="buttonCheckout">
+              <StripeCheckout
+                token={this.onToken}
+                amount={this.props.totalAmount*100}
+                currency="EUR"
+                stripeKey={process.env.REACT_APP_PUBLISHABLE_KEY}
+              />
+          </div>
           </div>
         </div>
     );

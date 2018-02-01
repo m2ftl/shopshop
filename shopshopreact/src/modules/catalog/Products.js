@@ -14,7 +14,10 @@ class Products extends Component {
       <tr key={product.id}>
         <td>{product.title}</td>
         <td className="bold">{product.min_price}€</td>
-        <td><img alt={product.title} src={"https://www.decathlon.fr/media/"+product.image_path} width="60px" height="60px" /></td>
+        <td><Link to={'/product/'+product.id}>
+              <img alt={product.title} src={"https://www.decathlon.fr/media/"+product.image_path} width="60px" height="60px" />
+            </Link>
+        </td>
         <td><Link to={'/product/'+product.id}>
               <button onClick={() => this.props.getProductDetails(product.id)}>View Details</button>
             </Link>
@@ -28,9 +31,11 @@ class Products extends Component {
     return (
       <div class="container-fluid">
         <div class="row justify-content-md-center">
-        <h1 class="col-md-auto">
-        OUR TOP PRODUCTS OF THE WEEK
-        </h1>
+          <h1 class="col-md-auto topWeek">
+            <span class="glyphicon glyphicon-star-empty"></span>
+            OUR TOP PRODUCTS OF THE WEEK
+            <span class="glyphicon glyphicon-star-empty"></span>
+          </h1>
         </div>
         <div class="row mt-2">
         <div class="col-sm">

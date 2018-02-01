@@ -52,7 +52,7 @@ class Cart extends React.Component{
           </table>
           <h1 className="totalPrice">The total price is <span className="bold">{sumPrice} €</span></h1>
           <Link to={'/order/'}>
-          <button onClick={this.props.calculateAmount} className="btn btn-success">Validate my order</button>
+          <button onClick={this.props.calculateAmount} className="btn btn-success buttonValCart">Validate my order</button>
           </Link>
         </div>
       )

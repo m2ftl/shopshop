@@ -69,7 +69,34 @@
   text-decoration: none;
 }
 
+.cartbutton img {
+  width: 40px;
+}
+
+/* Top of the week */
+
+.topWeek {
+  font-family: "Impact", fantasy;
+  color: #4285f4;
+  font-size: 40px;
+  text-shadow: 2px 2px 0 #DCDCDC;
+  padding: 10px 0 30px 0;
+}
+
+.topWeek span {
+  padding: 0 30px 0 30px;
+}
+
 /* List of Products */
+
+.listProducts thead th {
+  font-family: "Gill Sans", sans-serif;
+  font-style: italic;
+  font-weight: normal;
+  color: #cecece;
+  font-size: 28px;
+  padding-bottom: 15px;
+}
 
 .listProducts tbody td {
   padding-bottom: 10px;
@@ -90,9 +117,17 @@
   padding: 10px;
 }
 
+.titleCart {
+  padding: 0 0 30px 10px;
+}
+
 .titleCart img{
   float: left;
   margin: 8px;
+}
+
+.cartTable {
+  margin-left: 15px;
 }
 
 .cartTable tbody tr {
@@ -127,7 +162,40 @@
 }
 
 .totalPrice {
-  padding-top: 30px;
+  padding: 40px 0 0 10px;
+}
+
+.buttonValCart{
+  margin: 15px 0 40px 25px;
+}
+
+.stepDelivery {
+  color: #4285f4;
+  font-style: italic;
+}
+
+.ml-4 h2 {
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+
+.buttonDelivery {
+  margin-right: 15px;
+}
+
+.buttonValidate {
+  background-color: #4285f4;
+  color: white;
+}
+
+.buttonClear {
+  background-color: white;
+  color: grey;
+  border: 1px solid grey;
+}
+
+.buttonCheckout {
+  padding-bottom: 45px;
 }
 
 @keyframes App-logo-spin {
