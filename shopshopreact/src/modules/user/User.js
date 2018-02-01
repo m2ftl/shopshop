@@ -25,7 +25,7 @@ class User extends Component {
               className="g-signin2"
               data-onsuccess="googleConnectCallback"
               data-theme="dark"
-            ></div>
+            />
             </div>
           )}
         </div>
