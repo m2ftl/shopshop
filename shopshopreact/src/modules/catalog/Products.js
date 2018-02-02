@@ -10,21 +10,21 @@ class Products extends Component {
 
   render() {
 
-    let listPrdsDisplay = this.props.products.map((product) =>
-      <tr key={product.id}>
-        <td>{product.title}</td>
-        <td className="bold">{product.min_price}€</td>
-        <td><Link to={'/product/'+product.id}>
-              <img alt={product.title} src={"https://www.decathlon.fr/media/"+product.image_path} width="60px" height="60px" />
-            </Link>
-        </td>
-        <td><Link to={'/product/'+product.id}>
-              <button onClick={() => this.props.getProductDetails(product.id)}>View Details</button>
-            </Link>
-        </td>
-        <td><button className="btn btn-success" onClick={() => this.props.AddProductToCart(product)}>Add to cart</button></td>
-      </tr>
-    )
+    let listPrdsDisplay = this.props.products.map((product) => {
+    return (<div class="card imgcard float-left" key={product.id}>
+      <Link to={'/product/'+product.id}>
+      <img class="card-img-top" alt={product.title} src={"https://www.decathlon.fr/media/"+product.image_path} />
+      </Link>
+      <div class="card-body">
+        <h5 class="card-title">{product.title}</h5>
+        <h6 class="card-title">{product.min_price}€ </h6>
+        <Link to={'/product/'+product.id}>
+          <button className="btn btn-link" onClick={() => this.props.getProductDetails(product.id)}>View Details</button>
+        </Link>
+        <button className="btn btn-success" onClick={() => this.props.AddProductToCart(product)}>Add to cart</button>
+      </div>
+    </div>);
+  });
 
     console.log(listPrdsDisplay.length);
     if (listPrdsDisplay.length===0) {
@@ -76,20 +76,12 @@ class Products extends Component {
   } else {
     return (
       <div className="listProducts ml-3 mt-5">
-        <table>
-          <thead>
-            <tr>
-              <th>Products List</th>
-            </tr>
-          </thead>
-          <tbody>
-            {listPrdsDisplay}
-          </tbody>
-        </table>
+        <h1>Products List</h1>
+         <div className="container2">{listPrdsDisplay}
+         </div>
       </div>
     );
   }
-
   }
 }
 
