@@ -68,6 +68,7 @@ export default function cartReducer(state = initialState, action){
      sumPrice += product.quantity*product.min_price
     )
     sumPrice = Math.round(sumPrice*100)/100;
+    console.log(sumPrice);
     return{
       ...state,
       totalAmount: sumPrice
