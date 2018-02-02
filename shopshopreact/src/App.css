@@ -24,6 +24,20 @@
   justify-content: center;
 }
 
+.center {
+  width: 100%;
+  text-align: center;
+}
+
+.pleaseLogIn {
+  color: grey;
+  font-style: italic;
+}
+
+.iconLogIn {
+  padding-left: 20px;
+}
+
 .categories {
   display: grid;
   grid-template-columns: auto auto;
@@ -85,6 +99,14 @@
 
 .topWeek span {
   padding: 0 30px 0 30px;
+}
+
+.productsWeek {
+  transition: box-shadow .1s;
+}
+
+.productsWeek:hover {
+  box-shadow: 0 0 2px grey;
 }
 
 /* List of Products */

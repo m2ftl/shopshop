@@ -48,7 +48,8 @@ class Stripe extends Component {
   else {
     return (
     <div class="ml-4">
-      <h2>Please Log in </h2>
+      <h2 className="pleaseLogIn">Please Log in before proceeding to checkout
+      <span class="glyphicon glyphicon-upload iconLogIn"></span></h2>
     </div>
     )
   }
