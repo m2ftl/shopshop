@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../App.css";
-import StripeCheckout from "react-stripe-checkout";
 import { connect } from "react-redux";
 import { cartActions } from "../store/cart/actions";
 import { Link } from "react-router-dom";

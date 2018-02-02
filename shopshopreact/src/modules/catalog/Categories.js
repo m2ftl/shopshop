@@ -60,6 +60,7 @@ class Categories extends Component {
             <i class="glyphicon glyphicon-play-circle"></i>
         </li>)
       }
+      return null;
       }
     )
 
