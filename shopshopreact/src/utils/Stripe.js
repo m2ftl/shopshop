@@ -79,7 +79,7 @@ class Stripe extends Component {
           <h2>Step 2 - Proceed your payment</h2>
             <StripeCheckout
               token={this.onToken}
-              amount={this.props.totalAmount*100}
+              amount={Math.round(this.props.totalAmount*100*100)/100}
               currency="EUR"
               stripeKey={process.env.REACT_APP_PUBLISHABLE_KEY}
             />
