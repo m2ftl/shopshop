@@ -22,7 +22,7 @@ class ProductDetails extends Component {
             <i class="fa fa-home fa-2x" aria-hidden="true"></i>
           </Link>
         </div>
-      <div className="container container-fluid ProductDetails">
+      <div className="container2 container-fluid ProductDetails">
 
         <div className="clear"></div>
         <div>
