@@ -11,6 +11,7 @@ const validate = values => {
 
   // field should accept only letters and min 2 chars & max 30 chars
   var regex = /^[A-zÀ-ÖØ-öø-ÿ- ]{2,30}$/;
+  var regex2 = /^[A-zÀ-ÖØ-öø-ÿ- 0-9]{2,30}$/;
 
   if (!values.username) {
     errors.username = 'Required';
@@ -26,6 +27,11 @@ const validate = values => {
     errors.email = 'Required'
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Invalid email address'
+  }
+  if (!values.address) {
+    errors.address = 'Required';
+  } else if (regex2.test(values.address) === false) {
+    errors.address = "That can't be a real address"
   }
   if (!values.zipCode) {
     errors.zipCode = 'Required'
