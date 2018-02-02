@@ -51,7 +51,7 @@ const renderField = ({
     <label>{label}</label>
     <input {...input} type={type} class="form-control" />
     {touched &&
-      (error && <span>{error}</span>)}
+      (error && <span className="errorForm">*{error}</span>)}
   </div>
 )
 
