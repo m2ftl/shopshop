@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import "../../App.css";
+import StripeCheckout from "react-stripe-checkout";
 
-function validateInput() {
-
-}
 
 const validate = values => {
   const errors = {}
@@ -23,11 +21,6 @@ const validate = values => {
   } else if (regex.test(values.userFamilyName) === false) {
     errors.userFamilyName = "That can't be a real family name"
   }
-  if (!values.email) {
-    errors.email = 'Required'
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address'
-  }
   if (!values.address) {
     errors.address = 'Required';
   } else if (regex2.test(values.address) === false) {
@@ -43,6 +36,7 @@ const validate = values => {
   } else if (regex.test(values.city) === false) {
     errors.city = "That city has a strange name..."
   }
+  console.log(errors);
   return errors
 }
 
@@ -62,66 +56,113 @@ const renderField = ({
 )
 
 
-function ContactForm (props){
-  const { handleSubmit, pristine, reset, submitting } = props;
-  return (
-    <form onSubmit={handleSubmit}>
-      <div class="row">
-        <div class="form-group mr-3">
-          <Field
-            name="username"
-            type="text"
-            component={renderField}
-            label="First Name:"
-          />
-        </div>
-        <div class="form-group">
-          <Field
-            name="userFamilyName"
-            type="text"
-            component={renderField}
-            label="Family Name:"
-          />
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col-xs-3 ml-0 p-0">
-          <Field
-            name="address"
-            type="text"
-            component={renderField}
-            label="Address:"
-          />
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group mr-3">
-          <Field
-            name="zipCode"
-            type="number"
-            component={renderField}
-            label="ZIP Code:"
-          />
-        </div>
-        <div class="form-group">
-          <Field
-            name="city"
-            type="text"
-            component={renderField}
-            label="City:"
-          />
-        </div>
-      </div>
+class ContactForm extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      current:''
+    }
+  }
+
+  onToken = token => {
+    fetch("/charge", {
+      method: "POST",
+      body: JSON.stringify({
+        stripeData: token,
+        total: this.props.totalAmount
+      }),
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === "succeeded") {
+          console.log("succeeded ! data is : ",data);
+          return this.props.resetCart();
+        } else {
+          console.warn("tata : ",data);
+          // dispatch an error
+        }
+      });
+  };
+
+  render() {
+
+    const { handleSubmit, pristine, reset, submitting, invalid } = this.props;
+
+    return (
       <div>
-        <button className="buttonDelivery buttonValidate btn" type="submit" disabled={pristine || submitting}>
-          Validate
-        </button>
+      <form onSubmit={handleSubmit}>
+        <div className="formDeliveryCart">
+          <div class="row">
+            <div class="form-group mr-3">
+              <Field
+                name="username"
+                type="text"
+                component={renderField}
+                label="First Name:"
+              />
+            </div>
+            <div class="form-group">
+              <Field
+                name="userFamilyName"
+                type="text"
+                component={renderField}
+                label="Family Name:"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-xs-3 ml-0 p-0">
+              <Field
+                name="address"
+                type="text"
+                component={renderField}
+                label="Address:"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group mr-3">
+              <Field
+                name="zipCode"
+                type="number"
+                component={renderField}
+                label="ZIP Code:"
+              />
+            </div>
+            <div class="form-group">
+              <Field
+                name="city"
+                type="text"
+                component={renderField}
+                label="City:"
+              />
+            </div>
+          </div>
+        </div>
+
         <button className="buttonDelivery buttonClear btn" type="button" disabled={pristine || submitting} onClick={reset}>
           Clear all values
         </button>
-      </div>
-    </form>
-  )
+
+        </form>
+
+        <div>
+        <h2 className="stepTitle"><span className="stepDelivery">Step 2</span> - Proceed your payment</h2>
+
+          <div className="buttonCheckout">
+            <StripeCheckout
+              token={this.onToken}
+              amount={this.props.totalAmount*100}
+              currency="EUR"
+              stripeKey={process.env.REACT_APP_PUBLISHABLE_KEY}
+              disabled={invalid || pristine || submitting}
+            />
+          </div>
+        </div>
+        </div>
+    )
+  }
 }
 
 // create new, "configured" function

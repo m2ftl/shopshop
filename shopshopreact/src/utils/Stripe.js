@@ -38,21 +38,9 @@ class Stripe extends Component {
             </Link>
           </div>
           <div class="ml-4">
-          <h1>Proceed my Order</h1>
-          <h2><span className="stepDelivery">Step 1</span> - Fill my delivery address</h2>
-          <div class="container-fluid">
-            <Form />
-          </div>
-
-          <h2><span className="stepDelivery">Step 2</span> - Proceed your payment</h2>
-          <div className="buttonCheckout">
-              <StripeCheckout
-                token={this.onToken}
-                amount={this.props.totalAmount*100}
-                currency="EUR"
-                stripeKey={process.env.REACT_APP_PUBLISHABLE_KEY}
-              />
-          </div>
+            <h1>Proceed my Order</h1>
+            <h2 className="stepTitle"><span className="stepDelivery">Step 1</span> - Fill my delivery address</h2>
+              <Form />
           </div>
         </div>
     );
