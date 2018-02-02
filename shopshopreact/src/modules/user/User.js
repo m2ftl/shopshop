@@ -10,7 +10,9 @@ class User extends Component {
       <div className="navbar">
         {this.props.user.id ? (
         <div>
+          <a href="https://young-crag-32814.herokuapp.com/" target="_blank" rel="noopener noreferrer">
           <img alt={this.props.user.givenName} src={this.props.user.avatar} width={"70px"}/>
+          </a>
           <span>Welcome {this.props.user.givenName}</span>
         </div>
         ) : null}
