@@ -271,6 +271,11 @@
   min-height:205px;
 }
 
+.imgcard {
+  width: 18rem;
+  margin: 10px;
+}
+
 .clear {
   clear: both
 }
@@ -279,8 +284,21 @@
   text-transform: capitalize
 }
 
-.container {
-  display: flex; /* or inline-flex */
+.container2 {
+  display: flex;
+  flex-wrap: wrap ;
+  align-items: stretch;
+  padding-right: 60px
+}
+
+.card-body {
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .item-1 {
@@ -290,6 +308,8 @@
 .item-2 {
   flex-grow: 2; /* default 0 */
 }
+
+
 
 .wrapper {
     display: flex;
