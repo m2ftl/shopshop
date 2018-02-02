@@ -3,6 +3,8 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from "react-redux";
 import "../../App.css";
 import StripeCheckout from "react-stripe-checkout";
+import { cartActions } from "../../store/cart/actions";
+
 
 
 const validate = values => {
@@ -10,7 +12,7 @@ const validate = values => {
 
   // field should accept only letters and min 2 chars & max 30 chars
   var regex = /^[A-zÀ-ÖØ-öø-ÿ- ]{2,30}$/;
-  var regex2 = /^[A-zÀ-ÖØ-öø-ÿ- 0-9]{2,30}$/;
+  var regex2 = /^[A-zÀ-ÖØ-öø-ÿ-, 0-9]{2,30}$/;
 
   if (!values.username) {
     errors.username = 'Required';
@@ -174,4 +176,4 @@ function mapStateToProps(state) {
     totalAmount: state.cartReducer.totalAmount
   }
 }
-export default connect(mapStateToProps)(ContactForm);
+export default connect(mapStateToProps, cartActions)(ContactForm);

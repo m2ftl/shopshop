@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
-import { cartActions } from "../store/cart/actions";
 import { Link } from "react-router-dom";
 import Form from '../modules/cart/Form';
 
@@ -38,10 +37,8 @@ class Stripe extends Component {
 
 function mapStateToProps(state) {
   return {
-    givenName: state.userReducer.givenName,
-    familyName: state.userReducer.familyName,
-    totalAmount: state.cartReducer.totalAmount,
+    givenName: state.userReducer.givenName
   }
 }
 
-export default connect(mapStateToProps, cartActions)(Stripe);
+export default connect(mapStateToProps)(Stripe);
