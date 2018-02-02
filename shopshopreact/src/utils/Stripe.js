@@ -7,26 +7,7 @@ import Form from '../modules/cart/Form';
 
 
 class Stripe extends Component {
-  onToken = token => {
-    fetch("/charge", {
-      method: "POST",
-      body: JSON.stringify({
-        stripeData: token,
-        total: this.props.totalAmount
-      }),
-      headers: { "Content-Type": "application/json" }
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === "succeeded") {
-          console.log("succeeded ! data is : ",data);
-          return this.props.resetCart();
-        } else {
-          console.warn("tata : ",data);
-          // dispatch an error
-        }
-      });
-  };
+
   render() {
     if (this.props.givenName) {
     return (
@@ -60,7 +41,6 @@ function mapStateToProps(state) {
     givenName: state.userReducer.givenName,
     familyName: state.userReducer.familyName,
     totalAmount: state.cartReducer.totalAmount,
-    address: state.cartReducer.address
   }
 }
 

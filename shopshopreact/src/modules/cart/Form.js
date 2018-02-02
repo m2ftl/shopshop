@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from "react-redux";
 import "../../App.css";
 import StripeCheckout from "react-stripe-checkout";
 
@@ -36,7 +37,6 @@ const validate = values => {
   } else if (regex.test(values.city) === false) {
     errors.city = "That city has a strange name..."
   }
-  console.log(errors);
   return errors
 }
 
@@ -57,12 +57,6 @@ const renderField = ({
 
 
 class ContactForm extends Component{
-  constructor(props){
-    super(props)
-    this.state = {
-      current:''
-    }
-  }
 
   onToken = token => {
     fetch("/charge", {
@@ -175,4 +169,9 @@ let createReduxForm = reduxForm({
 // evaluate it for ContactForm component
 ContactForm = createReduxForm(ContactForm)
 
-export default ContactForm
+function mapStateToProps(state) {
+  return {
+    totalAmount: state.cartReducer.totalAmount
+  }
+}
+export default connect(mapStateToProps)(ContactForm);
